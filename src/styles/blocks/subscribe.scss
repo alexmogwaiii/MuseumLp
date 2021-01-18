@@ -1,0 +1,119 @@
+.subscribe {
+  width: 100%;
+
+  background-color: $redColor;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $primaryColor;
+
+  &__container {
+    @include containerWidth(100px);
+    
+    margin-top: 160px;
+
+    display: grid;
+    grid-template-columns: 2.5fr 2fr;
+    row-gap: 40px;
+
+    @include forTablet {
+      margin-top: 110px;
+      row-gap: 30px;
+      grid-template-columns: 1fr;
+    }
+
+    @include forMobile {
+      margin-top: 80px;
+      row-gap: 40px;
+    }
+  }
+
+  &__text {
+    grid-row-start: 2;
+  }
+
+  &__form {
+    position: relative;
+
+    grid-row-start: 2;
+    grid-column-start: 2;
+    justify-self: center;
+
+    margin-bottom: 165px;
+
+    @include forTablet {
+      margin: 50px 0 120px;
+      grid-row-start: 3;
+      grid-column-start: 1;
+      justify-self: start;
+    }
+
+    @include forMobile {
+      margin: 22px 0 80px;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: -50px;
+    top: -40px;
+
+    opacity: 0;
+    visibility: hidden;
+    width: 42px;
+    height: 42px;
+
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid $primaryColor;
+    background-image: url(../images/subscribe__arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+
+  &__hint {
+    position: absolute;
+    top: 0;
+    left: 10px;
+
+    transition: 0.3s;
+
+    cursor: text;
+  }
+  
+  &__email {
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+
+    background-color: transparent;
+    border-bottom: 1px solid $primaryColor;
+    color: $primaryColor;
+    font-size: 16px;
+
+    @include forMobile {
+      width: 228px;
+    }
+  }
+
+  &__email:focus,
+  &__email:not(:placeholder-shown) {
+    & + .subscribe__hint {
+      top: -20px;
+      left: 0;
+
+      font-size: 12px;
+    }
+
+    & ~ .subscribe__button {
+      top: -10px;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

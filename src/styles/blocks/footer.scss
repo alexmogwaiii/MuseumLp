@@ -1,0 +1,149 @@
+.footer {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $bgColor;
+  color: $primaryColor;
+
+  &__list {
+    position: relative;
+
+    @include containerWidth(100px);
+
+    margin-top: 160px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include forTablet {
+      margin-top: 120px;
+
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      row-gap: 60px;
+    }
+
+    @include forMobile {
+      margin-top: 80px;
+
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, max-content);
+    }
+  }
+
+  &__list-item {
+    &:nth-child(3) {
+      @include forTablet {
+        grid-column-start: 2;
+      }
+
+      @include forMobile {
+        grid-column-start: 1;
+        grid-row-start: 4;
+      }
+    }
+
+    &:nth-child(4) {
+      @include forTablet {
+        grid-row-start: 2;
+      }
+
+      @include forMobile {
+        grid-row-start: 3;
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 40px;
+
+    @include forTablet {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__phone-gap {
+    display: inline-block;
+    margin-left: 33px;
+  }
+
+  &__networks {
+    display: flex;
+
+    margin-top: 40px;
+
+    @include forTablet {
+      margin-top: 20px;
+    }
+  }
+
+  &__network {
+    margin-right: 20px;
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__schedule-item {
+    display: flex;
+  }
+
+  &__schedule-day {
+    width: 20px;
+    text-align: right;
+    margin-right: 16px;
+  }
+
+  &__membership-item,
+  &__about-us-item {
+    margin-bottom: 5px;
+  }
+
+  &__copyright {
+    display: flex;
+
+    margin: 75px 0 60px;
+
+    @include fontSmall;
+
+    @include forTablet {
+      margin: 100px 0 35px;
+    }
+
+    @include forMobile {
+      flex-direction: column-reverse;
+      margin: 40px;
+    }
+  }
+
+  &__copyright-item {
+    margin-right: 40px;
+  }
+
+  &__scroll-top {
+    position: absolute;
+    right: 0;
+
+    animation: moveTop 1s ease-in-out infinite alternate;
+
+    @keyframes moveTop {
+      100% {
+        transform: translateY(20px);
+      }
+    }
+
+    @include forTablet {
+      right: 15%;
+    }
+  }
+
+  &__arrow {
+    transform: rotate(-90deg);
+  }
+}
